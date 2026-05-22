@@ -1,6 +1,8 @@
 "use client";
 
+
 import { useEffect, useState } from "react";
+import Sidebar from "../components/Sidebar";
 
 const API_URL =
   process.env.NEXT_PUBLIC_API_URL ||
@@ -76,7 +78,11 @@ export default function EvidencePage() {
   }
 
   return (
-    <main className="min-h-screen bg-slate-50 p-8 text-slate-900">
+    
+    <div className="flex min-h-screen bg-slate-50">
+    <Sidebar />
+
+    <main className="flex-1 p-8 text-slate-900">
       <div className="mb-6">
         <a
           href="/"
@@ -84,7 +90,7 @@ export default function EvidencePage() {
         >
           ← Regresar al dashboard
         </a>
-      </div>
+      </div> 
       <div className="mx-auto max-w-3xl rounded-3xl bg-white p-8 shadow">
         <h1 className="mb-6 text-3xl font-bold text-slate-900">
           Subir evidencia
@@ -198,5 +204,6 @@ export default function EvidencePage() {
         </div>
       </div>
     </main>
+  </div>
   );
 }
