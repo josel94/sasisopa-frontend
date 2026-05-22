@@ -77,6 +77,14 @@ export default function EvidencePage() {
 
   return (
     <main className="min-h-screen bg-slate-50 p-8 text-slate-900">
+      <div className="mb-6">
+        <a
+          href="/"
+          className="inline-flex items-center gap-2 font-semibold text-slate-900 hover:opacity-70"
+        >
+          ← Regresar al dashboard
+        </a>
+      </div>
       <div className="mx-auto max-w-3xl rounded-3xl bg-white p-8 shadow">
         <h1 className="mb-6 text-3xl font-bold text-slate-900">
           Subir evidencia
