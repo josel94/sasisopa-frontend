@@ -1,7 +1,7 @@
 "use client";
 
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import Sidebar from "../components/Sidebar";
 import { useSearchParams } from "next/navigation";
 
@@ -9,7 +9,7 @@ const API_URL =
   process.env.NEXT_PUBLIC_API_URL ||
   "http://localhost:4000";
 
-export default function EvidencePage() {
+function EvidenceContent() {
   const [stations, setStations] = useState([]);
   const [obligations, setObligations] = useState([]);
 
@@ -228,5 +228,13 @@ export default function EvidencePage() {
       </div>
     </main>
   </div>
+  );
+}
+
+export default function Page() {
+  return (
+    <Suspense fallback={<div className="p-8">Cargando...</div>}>
+      <EvidenceContent />
+    </Suspense>
   );
 }
