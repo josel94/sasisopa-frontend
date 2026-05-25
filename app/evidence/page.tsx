@@ -3,6 +3,7 @@
 
 import { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
+import { useSearchParams } from "next/navigation";
 
 const API_URL =
   process.env.NEXT_PUBLIC_API_URL ||
@@ -18,9 +19,14 @@ export default function EvidencePage() {
   const [file, setFile] = useState<File | null>(null);
 
   const [loading, setLoading] = useState(false);
+  const searchParams = useSearchParams();
+  const estacionURL = searchParams.get("estacion") || "";
+  const obligacionURL = searchParams.get("obligacion") || "";
 
   useEffect(() => {
     loadData();
+    if (estacionURL) setStation(estacionURL);
+    if (obligacionURL) setObligation(obligacionURL);
   }, []);
 
   async function loadData() {
@@ -97,7 +103,7 @@ export default function EvidencePage() {
         </h1>
 
         <div className="space-y-5">
-
+        {!estacionURL && (
           <div>
             <label className="mb-2 block font-medium text-slate-700">
               Estación
@@ -122,7 +128,16 @@ export default function EvidencePage() {
               ))}
             </select>
           </div>
+        )}
+        
+        {estacionURL && (
+          <div className="rounded-xl bg-slate-100 p-4">
+            <p className="text-sm text-slate-500">Estación</p>
+            <p className="font-semibold">{estacionURL}</p>
+          </div>
+        )}
 
+        {!obligacionURL && (
           <div>
             <label className="mb-2 block font-medium text-slate-700">
               Obligación
@@ -149,6 +164,14 @@ export default function EvidencePage() {
               ))}
             </select>
           </div>
+        )}
+
+        {obligacionURL && (
+          <div className="rounded-xl bg-slate-100 p-4">
+            <p className="text-sm text-slate-500">Obligación</p>
+            <p className="font-semibold">{obligacionURL}</p>
+          </div>
+        )}
 
           <div>
             <label className="mb-2 block font-medium text-slate-700">
