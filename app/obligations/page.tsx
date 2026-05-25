@@ -111,16 +111,32 @@ export default function ObligationsPage() {
                     </td>
 
                     <td className="p-4">
-                      <Link
-                        href={`/evidence?obligacion=${encodeURIComponent(
-                          o.Nombre || ""
-                        )}&estacion=${encodeURIComponent(
-                          o.EstacionCodigo || ""
-                        )}`}
-                        className="rounded-xl bg-slate-900 px-4 py-2 text-xs font-semibold text-white"
-                      >
-                        Subir evidencia
-                      </Link>
+                      {o.TieneEvidencia ? (
+                        <div className="flex items-center gap-2">
+                          <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-700">
+                            Evidencia cargada
+                          </span>
+
+                          <a
+                            href={o.EvidenciaURL}
+                            target="_blank"
+                            className="rounded-xl bg-slate-200 px-3 py-2 text-xs font-semibold text-slate-700"
+                          >
+                            Ver evidencia
+                          </a>
+                        </div>
+                      ) : (
+                        <Link
+                          href={`/evidence?obligacion=${encodeURIComponent(
+                            o.Nombre || ""
+                          )}&estacion=${encodeURIComponent(
+                            o.EstacionCodigo || ""
+                          )}`}
+                          className="rounded-xl bg-slate-900 px-4 py-2 text-xs font-semibold text-white"
+                        >
+                          Subir evidencia
+                        </Link>
+                      )}
                     </td>
                   </tr>
                 );
