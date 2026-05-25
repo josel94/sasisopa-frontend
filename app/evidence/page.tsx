@@ -19,15 +19,22 @@ function EvidenceContent() {
   const [file, setFile] = useState<File | null>(null);
 
   const [loading, setLoading] = useState(false);
+  
   const searchParams = useSearchParams();
   const estacionURL = searchParams.get("estacion") || "";
   const obligacionURL = searchParams.get("obligacion") || "";
 
   useEffect(() => {
     loadData();
-    if (estacionURL) setStation(estacionURL);
-    if (obligacionURL) setObligation(obligacionURL);
-  }, []);
+
+    if (estacionURL) {
+      setStation(estacionURL);
+    }
+
+    if (obligacionURL) {
+      setObligation(obligacionURL);
+    }
+  }, [estacionURL, obligacionURL]);
 
   async function loadData() {
     const stationsRes = await fetch(`${API_URL}/api/stations`);
@@ -103,75 +110,60 @@ function EvidenceContent() {
         </h1>
 
         <div className="space-y-5">
-        {!estacionURL && (
-          <div>
-            <label className="mb-2 block font-medium text-slate-700">
-              Estación
-            </label>
 
-            <select
-              value={station}
-              onChange={(e) => setStation(e.target.value)}
-              className="w-full rounded-xl border p-3"
-            >
-              <option value="">
-                Selecciona estación
-              </option>
+        {estacionURL ? (
+            <div className="rounded-xl bg-slate-100 p-4">
+              <p className="text-sm text-slate-500">Estación</p>
+              <p className="font-semibold">{estacionURL}</p>
+            </div>
+          ) : (
+            <div>
+              <label className="mb-2 block font-medium text-slate-700">
+                Estación
+              </label>
 
-              {stations.map((s: any) => (
-                <option
-                  key={s.id}
-                  value={s.Codigo}
-                >
-                  {s.Nombre}
-                </option>
-              ))}
-            </select>
-          </div>
-        )}
-        
-        {estacionURL && (
-          <div className="rounded-xl bg-slate-100 p-4">
-            <p className="text-sm text-slate-500">Estación</p>
-            <p className="font-semibold">{estacionURL}</p>
-          </div>
-        )}
+              <select
+                value={station}
+                onChange={(e) => setStation(e.target.value)}
+                className="w-full rounded-xl border p-3"
+              >
+                <option value="">Selecciona estación</option>
 
-        {!obligacionURL && (
-          <div>
-            <label className="mb-2 block font-medium text-slate-700">
-              Obligación
-            </label>
+                {stations.map((s: any) => (
+                  <option key={s.id} value={s.Codigo}>
+                    {s.Nombre}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
 
-            <select
-              value={obligation}
-              onChange={(e) =>
-                setObligation(e.target.value)
-              }
-              className="w-full rounded-xl border p-3"
-            >
-              <option value="">
-                Selecciona obligación
-              </option>
+          {obligacionURL ? (
+            <div className="rounded-xl bg-slate-100 p-4">
+              <p className="text-sm text-slate-500">Obligación</p>
+              <p className="font-semibold">{obligacionURL}</p>
+            </div>
+          ) : (
+            <div>
+              <label className="mb-2 block font-medium text-slate-700">
+                Obligación
+              </label>
 
-              {obligations.map((o: any) => (
-                <option
-                  key={o.id}
-                  value={o.Nombre}
-                >
-                  {o.Nombre}
-                </option>
-              ))}
-            </select>
-          </div>
-        )}
+              <select
+                value={obligation}
+                onChange={(e) => setObligation(e.target.value)}
+                className="w-full rounded-xl border p-3"
+              >
+                <option value="">Selecciona obligación</option>
 
-        {obligacionURL && (
-          <div className="rounded-xl bg-slate-100 p-4">
-            <p className="text-sm text-slate-500">Obligación</p>
-            <p className="font-semibold">{obligacionURL}</p>
-          </div>
-        )}
+                {obligations.map((o: any) => (
+                  <option key={o.id} value={o.Nombre}>
+                    {o.Nombre}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
 
           <div>
             <label className="mb-2 block font-medium text-slate-700">
