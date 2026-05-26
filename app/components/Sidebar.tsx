@@ -5,7 +5,7 @@ export default function Sidebar() {
     { name: "Dashboard", href: "/" },
     { name: "Evidencias", href: "/evidence" },
     { name: "Obligaciones", href: "/obligations" },
-    { name: "Programaciones", href: "/schedule" },
+    { name: "Programaciones", href: "/programaciones" },
     { name: "Auditorías", href: "/audits" },
     { name: "Hallazgos", href: "/findings" },
     { name: "KPIs", href: "/kpis" },
