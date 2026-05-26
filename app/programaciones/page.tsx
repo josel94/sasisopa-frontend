@@ -86,29 +86,29 @@ export default function ProgramacionesPage() {
 
         <div className="overflow-hidden rounded-3xl bg-white shadow">
           <table className="min-w-full">
-            <thead className="bg-slate-100">
+            <thead className="bg-slate-100 text-slate-900">
               <tr>
-                <th className="px-6 py-4 text-left">
+                <th className="px-6 py-4 text-left font-bold text-slate-900">
                   Estación
                 </th>
 
-                <th className="px-6 py-4 text-left">
+                <th className="px-6 py-4 text-left font-bold text-slate-900">
                   Obligación
                 </th>
 
-                <th className="px-6 py-4 text-left">
+                <th className="px-6 py-4 text-left font-bold text-slate-900">
                   Frecuencia
                 </th>
 
-                <th className="px-6 py-4 text-left">
+                <th className="px-6 py-4 text-left font-bold text-slate-900">
                   Responsable
                 </th>
 
-                <th className="px-6 py-4 text-left">
+                <th className="px-6 py-4 text-left font-bold text-slate-900">
                   Vencimiento
                 </th>
 
-                <th className="px-6 py-4 text-left">
+                <th className="px-6 py-4 text-left font-bold text-slate-900">
                   Estado
                 </th>
               </tr>
