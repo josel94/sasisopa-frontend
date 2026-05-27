@@ -118,30 +118,30 @@ export default function ProgramacionesPage() {
               {items.map((item, idx) => (
                 <tr
                   key={idx}
-                  className="border-t border-slate-100"
+                  className="border-t border-slate-100 text-slate-800"
                 >
-                  <td className="px-6 py-4">
+                  <td className="px-6 py-4 text-slate-800">
                     {item.EstacionCodigo}
                   </td>
 
-                  <td className="px-6 py-4">
+                  <td className="px-6 py-4 text-slate-800">
                     {item.Obligacion}
                   </td>
 
-                  <td className="px-6 py-4">
+                  <td className="px-6 py-4 text-slate-800">
                     {item.Frecuencia}
                   </td>
 
-                  <td className="px-6 py-4">
+                  <td className="px-6 py-4 text-slate-800">
                     {item.Responsable}
                   </td>
 
-                  <td className="px-6 py-4">
+                  <td className="px-6 py-4 text-slate-800">
                     {item.FechaVencimiento}
                   </td>
 
-                  <td className="px-6 py-4">
-                    <span className="rounded-full bg-yellow-100 px-3 py-1 text-xs font-semibold text-yellow-700">
+                  <td className="px-6 py-4 text-slate-800">
+                    <span className="rounded-full bg-yellow-200 px-3 py-1 text-xs font-bold text-yellow-900">
                       {item.Estado}
                     </span>
                   </td>
